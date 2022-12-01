@@ -68,17 +68,7 @@
 
 ## 其他说明
 #### 本地调试
-
-把.env.example重命名为.env， 自行修改对应配置项， 运行后会自动加载。
-
-```
-MYSQL_USERNAME="admin"          #数据库用户名
-MYSQL_PASSWORD="Aa123456"       #数据库密码
-MYSQL_ADDRESS="127.0.0.1:3306"  #数据库地址
-WX_APPID="wx################"   #微信APPID
-```
-
-服务启动前会从环境变量中读取数据库配置，自行写入环境变量后运行一下代码， 即可在本地启动服务。
+服务启动前会从环境变量中读取数据库配置，自行写入环境变量后运行一下代码，即可在本地启动服务。
 ```
 go run main
 ```
@@ -115,17 +105,15 @@ go run main
 - 微信回调消息: 大驼峰
 
 ## 使用注意
-1. 需打开云托管开放接口服务开关后才能免鉴权调用微信开放api。
-  ![开放接口服务](https://res.wx.qq.com/op_res/6rcrTi7fRr5LStuAxoI94RrXbKG5L7OAiRfliINbA4qcM73YIjl7sMUgvSQBycgeKMBmsj7mJ2l5gTj1uCMlkA)
+如果不是通过微信云托管控制台部署模板代码，而是自行复制/下载模板代码后，手动新建一个服务并部署，需要在「服务设置」中补全以下环境变量，才可正常使用，否则会引发无法连接数据库，进而导致部署失败。
 
-2. 如果不是通过微信云托管控制台部署模板代码，而是自行复制/下载模板代码后，手动新建一个服务并部署，需要在「服务设置」中补全以下环境变量，才可正常使用，否则会引发无法连接数据库，进而导致部署失败。
+- MYSQL_ADDRESS
+- MYSQL_PASSWORD
+- MYSQL_USERNAME 
+- WX_APPID
 
-   - MYSQL_ADDRESS
-   - MYSQL_PASSWORD
-   - MYSQL_USERNAME 
-   - WX_APPID
+以上四个变量的值请按实际情况填写。如果使用云托管内MySQL，可以在控制台MySQL页面获取相关信息。
 
-   以上四个变量的值请按实际情况填写。如果使用云托管内MySQL，可以在控制台MySQL页面获取相关信息。
 
 ## License
 
